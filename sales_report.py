@@ -1,14 +1,20 @@
 """Generate sales report showing total melons each salesperson sold."""
+# improvements:
+# make this script a function to be called.
+# include the sales totals for each salesperson (another function)
+# close the resource at the end of the function
 
 # salepeople and melons_sold arrays are created and are empty to eventually append sum totals of each to.
 salespeople = []
 melons_sold = []
 
-f = open('sales-report.txt')
+
+def melons_sold_by_salesperson():
+    f = open('sales-report.txt')
 # the txt file is open to be read
-for line in f:
-    line = line.rstrip()
-    entries = line.split('|')
+    for line in f:
+        line = line.rstrip()
+        entries = line.split('|')
     # this loop iterates over the txt file and prints each line separating the lines into three elements where they are separated (by the '|'). each element is renamed to 'entries'.
 
     salesperson = entries[0]
@@ -24,7 +30,7 @@ for line in f:
         melons_sold.append(melons)
         # these lines append the salespeople and melons to the salespeople and melons_sold arrays.
 
-
-for i in range(len(salespeople)):
-    print(f'{salespeople[i]} sold {melons_sold[i]} melons')
+    for i in range(len(salespeople)):
+        print(f'{salespeople[i]} sold {melons_sold[i]} melons')
+    f.close()
 # this for loop runs through the salespeople array and prints the print statement for each iteration (i.e. for each salesperson that is in the salespeople array)
